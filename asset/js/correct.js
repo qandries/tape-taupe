@@ -5,10 +5,10 @@ var interval;
 var life = 5;
 var score = 0;
 var apparitionTimer = 2000;
-var disapearanceTimer = 1800;
+var disappearanceTimer = 1800;
 
 $(document).ready(function() {
-    $('[data-use="startgame"]').on('click', function() {
+    $('[data-use="gameOverPage"]').on('click', function() {
         //playSound('./assets/sound/background_sound.mp3');
         $('[data-use="life"] span').html(life);
         renderGameboard(5, 5);
@@ -22,14 +22,14 @@ $(document).ready(function() {
         removeTarget('true');
     });
 
-    function playSound(sound) {
+ /*   function playSound(sound) {
         $('body').append('<audio src="' + sound + '" autoplay></audio>');
-    }
+    }*/
     function incrementScore(increment) {
         score += increment;
         $('[data-use="score"] span').html(score);
         apparitionTimer -= 100;
-        disapearanceTimer = apparitionTimer;
+        disappearanceTimer = apparitionTimer;
         clearInterval(interval);
         interval = setInterval(displayTarget, apparitionTimer);
     }
@@ -70,7 +70,7 @@ $(document).ready(function() {
         $('div[data-vertical="' + ver + '"] div[data-horizontal="' + hor + '"]').html('<div id="target" class="imgDiv"><img src="./asset/image/racoon.png"></div>');
         removeTimer = setTimeout(function() {
             removeTarget('false');
-        }, disapearanceTimer);
+        }, disappearanceTimer);
     }
     function renderGameboard(horizontal = 10, vertical = 10) {
         horizontalMax = horizontal;

@@ -1,17 +1,17 @@
-var abscisseMax;
-var ordonneeMax;
-var removeTimer;
-var interval;
-var score = 0;
-var life = 3;
-var appearanceTimer = 1500;
-var disappearanceTimer = 1200;
+let abscisseMax;
+let ordonneeMax;
+let removeTimer;
+let interval;
+let score = 0;
+let life = 5;
+let appearanceTimer = 1500;
+let disappearanceTimer = 1200;
 $(document).ready(function () {
     StartGame();
 
     $('body').on('click', '#target img',function () {
         clearTimeout(removeTimer);
-        playSound('../sound/remove.mp3');
+        //playSound('../sound/remove.mp3');
         removeTarget(true);
     });
 
@@ -20,18 +20,18 @@ $(document).ready(function () {
         $('body').on('click', 'button', function () {
             $('#start').remove();
             score = 0;
-            life = 3;
-            playSound('../sound/background_sound.mp3');
+            life = 5;
+            //playSound('../sound/background_sound.mp3');
             renderGameboard(5,5);
             displayMenu(score,life);
             interval = setInterval(displayTarget, appearanceTimer);
         });
     }
 
-    function playSound(sound) {
+/*    function playSound(sound) {
         $('body').append('<audio src="' + sound + '" autoplay></audio>');
     }
-
+*/
     function displayMenu(score, life) {
         $('section[data-use="menu"]').html('<div class="menu"><ul><li>Score : ' + score + '</li><li>Life : ' + life + '</li></ul></div>')
     }
@@ -39,8 +39,8 @@ $(document).ready(function () {
     function incrementScore(increment) {
         score = score + increment;
         displayMenu(score,life);
-        appearanceTimer -= 100;
-        disappearanceTimer -= 10;
+        //appearanceTimer -= 100;
+        //disappearanceTimer -= 50;
         clearInterval(interval);
         interval = setInterval(displayTarget, appearanceTimer);
     }
@@ -77,8 +77,8 @@ $(document).ready(function () {
     // Generate pseudo-random position for the target.
     // Launch countdown to disappearance.
    function displayTarget() {
-      var abs = 1 + Math.floor(Math.random() * abscisseMax);
-      var ord = 1 + Math.floor(Math.random() * ordonneeMax);
+      let abs = 1 + Math.floor(Math.random() * abscisseMax);
+      let ord = 1 + Math.floor(Math.random() * ordonneeMax);
       $('div[data-ordonnee="' + ord + '"] div[data-abscisse="' + abs + '"]').html('<div id="target" class="imgDiv"><img id="hit" src="./asset/image/racoon.png"></div>');
       removeTimer = setTimeout(function () {
          removeTarget(false)
@@ -88,10 +88,10 @@ $(document).ready(function () {
    function renderGameboard(abscisse = 10, ordonnee = 10) {
        abscisseMax = abscisse;
        ordonneeMax = ordonnee;
-       var gameboard = "";
-       for (var i=1; i <= ordonnee; i++){
+       let gameboard = "";
+       for (let i=1; i <= ordonnee; i++){
           gameboard += "<div data-ordonnee='" + i + "'>";
-          for (var j=1; j <= abscisse; j++){
+          for (let j=1; j <= abscisse; j++){
              gameboard += "<div style='height:" + 100 / ordonnee + "vh;width: " + 100 / abscisse + "%;' data-abscisse='" + j + "'></div>"
           }
           gameboard += "</div>";
