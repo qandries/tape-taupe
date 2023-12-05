@@ -1,8 +1,3 @@
-/*font-family: 'Luckiest Guy', cursive;
-
-font-family: 'Pragati Narrow', sans-serif;
-*/
-
 body {
     margin: 0;
     padding: 0;
@@ -36,7 +31,7 @@ section[data-use="menu"] {
 
 }
 
-section[data-use="menu"] .menu ul{
+section[data-use="menu"] .menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -45,7 +40,7 @@ section[data-use="menu"] .menu ul{
     font-size: larger;
 }
 
-section[data-use="menu"] .menu li{
+section[data-use="menu"] .menu li {
     display: flex;
     padding: 10% 0 0 10%;
 }
